@@ -22,8 +22,6 @@ const WorkOrderDetails = () => {
     description,
     category,
     createdAt,
-    // totalTime,
-    // additionalCosts,
     location }, setState] = useLocaleState(workOrderDetails)
 
   if (!id) {
