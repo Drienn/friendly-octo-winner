@@ -1,41 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Box } from '@material-ui/core';
-
-import workOrdersData from '../../stubs/workOrders.json';
 import WorkOrder from './WorkOrder';
 import { headers } from '../../constants';
 import { WorkOrdersWrapper, WorkOrdersTable, WorkOrdersHeaderRow, WorkOrdersHeader } from '../../styles/workOrders';
+import { useStore } from '../../hooks';
 
-// TODO: Convert this to a functional component
 export default function WorkOrders() {
-  const [dataFetched, setDataFetched] = useState(false);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    setDataFetched(true)
-    setData(workOrdersData.data.workOrders)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []) // * No values in the dependency array essentially mimics componentDidMount
+  const { data, dataFetched } = useStore();
 
   if (!dataFetched) {
     return (
       <div>Loading...</div>
     )
   }
+
   return (
     <WorkOrdersWrapper>
       <Box fontSize={20} fontWeight='fontWeightBold'>Work Orders</Box>
       <WorkOrdersTable>
         <thead>
           <WorkOrdersHeaderRow>
-            {headers.map((header) => <WorkOrdersHeader>{header}</WorkOrdersHeader>)}
+            {headers.map((header) => <WorkOrdersHeader key={header}>{header}</WorkOrdersHeader>)}
           </WorkOrdersHeaderRow>
         </thead>
         <tbody>
-          {data.map((workOrder) => <WorkOrder workOrder={workOrder} />)}
+          {data.map((workOrder) => <WorkOrder key={workOrder?.id} workOrder={workOrder} />)}
         </tbody>
       </WorkOrdersTable>
     </WorkOrdersWrapper>
   );
 }
-// }

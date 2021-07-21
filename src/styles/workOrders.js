@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const WorkOrdersWrapper = styled.div`
+export const WorkOrdersWrapper = styled.form`
     height: 100vh;
     overflow: scroll;
     padding: 0px 20px;
@@ -43,7 +43,9 @@ export const WorkOrderDetailsWrapper = styled(WorkOrdersWrapper)`
     padding: 20px;
 `;
 
-export const WorkOrderDetailsHeader = styled(WorkOrdersHeader)`
+export const WorkOrderDetailsHeader = styled.h3`
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
 `;
 
 

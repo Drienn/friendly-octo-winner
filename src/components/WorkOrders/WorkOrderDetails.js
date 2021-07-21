@@ -1,53 +1,94 @@
-import React from 'react';
-import moment from 'moment';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { WorkOrderDetailsWrapper, WorkOrderDetailsHeader, WorkOrderDetailsContent, WorkOrderDetailsInfo, WorkOrderDetailsDescription, WorkOrderDetailsData } from '../../styles/workOrders';
+import { dateTimeFormat, safeText } from '../../utils';
+import EditButton from '../EditButton';
+import EditableInput from '../EditableInput';
+import { priorityOptions } from '../../constants'
+import { useLocaleState, useStore } from '../../hooks';
+import WorkOrderNotFound from './WorkOrderNotFound';
 
 const WorkOrderDetails = () => {
-  const { state } = useLocation();
-  const { workOrderDetails } = state;
-  const { priority, updatedAt, number, title, description, category, createdAt, totalTime, additionalCosts, location } = workOrderDetails;
+  const { updateData } = useStore();
+  const [editMode, setEditMode] = useState(false);
+  const { state = {} } = useLocation();
+  const { workOrderDetails = {} } = state;
+  const [{
+    id,
+    priority,
+    updatedAt,
+    number,
+    title,
+    description,
+    category,
+    createdAt,
+    // totalTime,
+    // additionalCosts,
+    location }, setState] = useLocaleState(workOrderDetails)
 
+  if (!id) {
+    return <WorkOrderNotFound />
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!editMode) {
+      updateData({ id, priority, title, description });
+    }
+  }
   return (
-    <WorkOrderDetailsWrapper>
+    <WorkOrderDetailsWrapper onSubmit={onSubmit}>
+      <EditButton editMode={editMode} setEditMode={setEditMode} type="submit" />
       <WorkOrderDetailsContent>
         <WorkOrderDetailsHeader>
-          Details
+          <b>Details</b>
         </WorkOrderDetailsHeader>
         <WorkOrderDetailsInfo>
+          <EditableInput
+            label="Priority:"
+            name="priority"
+            editMode={editMode}
+            value={safeText(priority)}
+            type="select"
+            options={priorityOptions}
+            onChange={setState}
+          />
           <div>
-            Priority: {priority}
-          </div>
-          <div>
-            Updated: {moment(updatedAt).format('MM/DD/YY h:mm:ss a')}
+            <b>Updated:</b> {dateTimeFormat(updatedAt)}
           </div>
         </WorkOrderDetailsInfo>
         <WorkOrderDetailsDescription>
           <div>
-            Work Order#:{number}
+            <b>Work Order#:</b> {safeText(number)}
           </div>
-          <div>
-            Title: {title}
-          </div>
-
-          <div>
-            Description: {description}
-          </div>
+          <EditableInput
+            label="Title:"
+            name="title"
+            editMode={editMode}
+            value={title}
+            onChange={setState}
+          />
+          <EditableInput
+            label="Description"
+            name="description"
+            editMode={editMode}
+            value={description}
+            onChange={setState}
+          />
         </WorkOrderDetailsDescription>
         <WorkOrderDetailsData>
           <div>
-            Category: {category}
+            <b>Category:</b> {safeText(category)}
           </div>
           <div>
-            Created: {moment(createdAt).format('MM/DD/YY h:mm:ss a')}
+            <b>Created:</b> {dateTimeFormat(createdAt)}
           </div>
         </WorkOrderDetailsData>
 
-        <div>Locations</div>
-        <div>{location?.map(loc =>
-          <div>{loc.name}</div>
-        )}
-        </div>
+        <label><b>Locations:</b></label><br />
+        <ul>
+          {safeText(location?.map(loc => <li key={loc.name}>{loc.name}</li>))}
+        </ul>
       </WorkOrderDetailsContent>
     </WorkOrderDetailsWrapper>
   )

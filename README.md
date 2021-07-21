@@ -49,9 +49,11 @@ We have sprinkled some bugs throughout the code. Please let us know below what y
   - caused when `title` is `undefined` - prevented page from breaking with optional chaining `title?.toUpperCase()`
 - **`WorkOrderDetails.js:47 TypeError: Cannot read property 'map' of null`**
   - no check to ensure `location` is an array - optional chaning to the rescue again! - `location?.map(loc =>`_`...rest of code`_
-- There was an issue where the side nav was appearing a bit shorter than the rest of the page:
+- **There was an issue where the side nav was appearing a bit shorter than the rest of the page:**
   - ![Screenshot](./src/resources/drove-me-crazy.png)
   - there was a sneaky style placed in the `index.css` -> `#root { height : 100vh; }` removing that fixed it right up.
+- **The tests weren't invoking the function at the end of the `expect` statements**
+  - corrected to invoke - `toBeInTheDocument()`
 
 ## Work Order List
 
