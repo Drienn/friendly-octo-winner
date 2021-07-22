@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EditButton from '../components/EditButton';
+import { EditButton } from '../components/atoms';
 import { Button } from '@material-ui/core';
 
 const mockSetState = jest.fn();

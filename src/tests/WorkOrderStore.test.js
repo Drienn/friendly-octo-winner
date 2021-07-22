@@ -10,7 +10,7 @@ jest.mock('react', () => ({
 }))
 
 describe('WorkOrderStore', () => {
-  const renderComp = () => shallow(<WorkOrderStore />)
+  const renderComp = () => shallow(<WorkOrderStore children={<div />} />)
   it('updateData works as intended', () => {
     useState.mockImplementationOnce(() => [false, jest.fn()])
     useState.mockImplementationOnce(() => [[{ id: 1 }, { id: 2 }, { id: 3 }], mockSetState])

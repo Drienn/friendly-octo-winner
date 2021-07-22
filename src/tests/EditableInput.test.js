@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EditableInput from '../components/EditableInput';
+import { EditableInput } from '../components/atoms';
 import { Select, Input } from '@material-ui/core';
 import { priorityOptions } from '../constants';
 

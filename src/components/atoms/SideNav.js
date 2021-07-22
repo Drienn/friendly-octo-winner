@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
-import { ReactComponent as Logo } from '../logo.svg';
+import { ReactComponent as Logo } from '../../logo.svg';
 
-import { SideNavWrapper, SideNavOptions, SideNavOption } from '../styles/sideNav';
+import { SideNavWrapper, SideNavOptions, SideNavOption } from '../../styles/sideNav';
 
 const SideNav = () => {
   return (

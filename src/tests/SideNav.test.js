@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
-import SideNav from '../components/SideNav';
+import { SideNav } from '../components/atoms';
 
 const mockSetState = jest.fn();
 jest.mock('react', () => ({

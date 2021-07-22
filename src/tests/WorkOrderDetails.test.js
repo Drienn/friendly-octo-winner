@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 import { useLocation } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { WorkOrderDetails } from '../components/WorkOrders';
-import { useStore } from '../hooks';
 import { WorkOrderDetailsWrapper } from '../styles/workOrders';
 
 const mockSetState = jest.fn();

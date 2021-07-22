@@ -16,7 +16,7 @@ export default function WorkOrders() {
 
   return (
     <WorkOrdersWrapper>
-      <Box fontSize={20} fontWeight='fontWeightBold'>Work Orders</Box>
+      <Box fontSize={20} padding={2} fontWeight='fontWeightBold'>Work Orders</Box>
       <WorkOrdersTable>
         <thead>
           <WorkOrdersHeaderRow>

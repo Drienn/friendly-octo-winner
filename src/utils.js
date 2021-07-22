@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import NotListed from './components/NotListed';
+import { NotListed } from './components/atoms';
 
 export const dateTimeFormat = date => date ? moment(date).format('MM/DD/YY h:mm:ss a') : <NotListed />;
 export const dateFormat = date => date ? moment(date).format('MM/DD/YY') : <NotListed />;

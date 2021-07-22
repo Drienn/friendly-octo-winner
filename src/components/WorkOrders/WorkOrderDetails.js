@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { WorkOrderDetailsWrapper, WorkOrderDetailsHeader, WorkOrderDetailsContent, WorkOrderDetailsInfo, WorkOrderDetailsDescription, WorkOrderDetailsData } from '../../styles/workOrders';
 import { dateTimeFormat, safeText } from '../../utils';
-import EditButton from '../EditButton';
-import EditableInput from '../EditableInput';
+import { EditButton, EditableInput } from '../atoms';
 import { priorityOptions } from '../../constants'
 import { useLocaleState, useStore } from '../../hooks';
 import WorkOrderNotFound from './WorkOrderNotFound';

@@ -4,7 +4,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import SideNav from './components/SideNav';
+import { SideNav } from './components/atoms';
 import Home from './components/Home';
 import { WorkOrders, WorkOrderDetails, WorkOrderStore } from './components/WorkOrders';
 import { AppWrapper, MainWrapper } from './styles/app';
