@@ -31,6 +31,9 @@ export const WorkOrdersRow = styled.tr`
 	:hover {
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	}
+  :nth-child(even) {
+      background-color: rgba(100, 100, 100, 0.1)
+    }
 `;
 
 export const WorkOrderData = styled.td`
@@ -43,8 +46,7 @@ export const WorkOrderDetailsWrapper = styled(WorkOrdersWrapper)`
     padding: 20px;
 `;
 
-export const WorkOrderDetailsHeader = styled.h3`
-  border-bottom: 1px solid black;
+export const WorkOrderDetailsHeader = styled.h2`
   padding-bottom: 5px;
 `;
 
