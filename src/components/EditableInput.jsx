@@ -1,4 +1,5 @@
 import React from 'react'
+import { func, string, array, bool } from 'prop-types';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 // import FormHelperText from '@material-ui/core/FormHelperText';
@@ -11,7 +12,6 @@ const inputTypeMap = {
   select: Select,
   text: Input,
   input: Input,
-  undefined: Input,
 }
 
 export default function EditableInput({ editMode, value, type, onChange, options, label, name, ...rest }) {
@@ -26,5 +26,18 @@ export default function EditableInput({ editMode, value, type, onChange, options
 }
 
 EditableInput.defaultProps = {
+  type: 'input',
+  options: null,
   onChange: () => null,
+  value: '',
+}
+
+EditableInput.propTypes = {
+  editMode: bool.isRequired,
+  value: string,
+  type: string,
+  onChange: func,
+  options: array,
+  label: string.isRequired,
+  name: string.isRequired
 }

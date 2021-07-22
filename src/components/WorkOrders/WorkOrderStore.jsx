@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { oneOfType, arrayOf, element } from 'prop-types';
 import { StoreContext } from '../../hooks'
 import workOrdersData from '../../stubs/workOrders.json';
 
@@ -29,4 +30,8 @@ export default function WorkOrderStore({ children }) {
       {children}
     </StoreContext.Provider >
   )
+}
+
+WorkOrderStore.propTypes = {
+  children: oneOfType([arrayOf(element), element]).isRequired,
 }

@@ -46,7 +46,7 @@ const WorkOrderDetails = () => {
             label="Priority:"
             name="priority"
             editMode={editMode}
-            value={safeText(priority)}
+            value={priority}
             type="select"
             options={priorityOptions}
             onChange={setState}

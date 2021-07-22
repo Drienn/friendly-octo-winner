@@ -1,4 +1,5 @@
 import React from 'react';
+import { shape } from 'prop-types'
 import { useHistory } from 'react-router-dom';
 import { WorkOrdersRow, WorkOrderData } from '../../styles/workOrders';
 import WorkStatus from './WorkStatus';
@@ -31,6 +32,10 @@ const WorkOrder = ({ workOrder }) => {
       <WorkOrderData>{dateFormat(createdAt)}</WorkOrderData>
     </WorkOrdersRow>
   )
+}
+
+WorkOrder.propTypes = {
+  workOrder: shape({}).isRequired,
 }
 
 export default WorkOrder;
